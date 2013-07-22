@@ -6,7 +6,7 @@ int main()
     Window App;
     int STATE = 0;
 
-    App.CreateWindow(600,800,"Weed Hunter",false);
+    App.CreateWindow(640,480,"Weed Hunter",false);
 
     while(Running)
     {
