@@ -9,6 +9,9 @@
 #include <stdio.h>
 #include <iostream>
 #include <SDL/SDL.h>
+#include <SDL/SDL_mixer.h>
+
+#include "Graphics.hpp"
 
 using namespace std;
 

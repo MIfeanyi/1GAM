@@ -4,6 +4,8 @@
 #include <string>
 #include <sstream>
 
+#include "System.hpp"
+
 // String.hpp is no longer depends on Font.hpp
 
 using namespace std;

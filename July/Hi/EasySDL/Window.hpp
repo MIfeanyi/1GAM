@@ -6,6 +6,7 @@
 
 #include "String.hpp"
 #include "Graphics.hpp"
+#include "Font.hpp"
 
 using namespace std;
 
