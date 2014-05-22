@@ -2,7 +2,7 @@
 --Look into love.run() http://www.love2d.org/wiki/love.run
 function love.load()
 	--Global Variables
-  love.window.setTitle("Dunk")
+  love.window.setTitle("Defender")
   --http://love2d.org/wiki/love.window.setMode
 	--http://love2d.org/wiki/love.window.setMode
   --Default Res: 800x600 in lua.conf
@@ -10,7 +10,7 @@ function love.load()
   state = 'Menu'
   
 	--Graphics
-	--image = love.graphics.newImage("Farm.png")
+	--image = love.graphics.newImage& ("Farm.png")
   --playerImage = love.graphics.newImage("hotdogboy.png")
   --cpuImage = love.graphics.newImage("pickleman.png")
   --candy = love.graphics.newImage("Candy.png")
