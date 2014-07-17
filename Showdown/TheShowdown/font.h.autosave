@@ -1,0 +1,17 @@
+#ifndef FONT_H
+#define FONT_H
+
+#include "SDL2/SDL_"
+
+
+class Font
+{
+public:
+    
+    Font();
+    
+    
+    
+};
+
+#endif // FONT_H
