@@ -39,12 +39,12 @@ function love.load()
   kSpawn = false
   knifeX = 0
   knifeY = 0
-  knifeDamage = 5
+  knifeDamage = 40
   
   --variables for enemy
   enemyX = 800
   enemyY = 400
-  enemySpeed = 75
+  enemySpeed = 50
   
 	--local f = love.graphics.newFont(love._vera_ttf, 14)
     --love.graphics.setFont(f)

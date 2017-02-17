@@ -40,12 +40,12 @@ function updateGame(delta)
   --Fighting
   if love.keyboard.isDown(" ") then
     playerPunching = true
-    --Run punch animation
+    
     --If enemy stabbed
     if collisionCheck(playerX,playerY,32,64,enemyX,enemyY,32,64) == true then
       if(playerX < enemyX) then
         enemyX = enemyX + knifeDamage * enemySpeed * delta
-      elseif(playerX > enemyX + 32) then
+      elseif(playerX > enemyX) then
       enemyX = enemyX - knifeDamage * enemySpeed * delta
     end
   end
