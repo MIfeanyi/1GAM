@@ -9,8 +9,8 @@ lovelyMoon = require("lib.lovelyMoon")
 states = {}
 
 function love.load()
-	states.menu = lovelyMoon.addState("states.menu", "menu")
-	states.game = lovelyMoon.addState("states.game", "game")
+	states.menu = lovelyMoon.addState("states.intro", "intro")
+	--states.game = lovelyMoon.addState("states.game", "game") --Not yet
 	lovelyMoon.enableState("menu")
 end
 
