@@ -2,17 +2,17 @@ require("cutscene")
 CS = cutScene
 
 scene1 = {
-    done = false,
-    dialogPause = true
+    done = false
 }
 
 function scene1:asests() --anything you need to load
+    --addImage("","")
 end
 
 function scene1:script()
-    CS:addDialog("This is a test.","TMan",false) --id,text,imgID,pause
-    CS:addDialog("I really hope it works","VMan",false)
-    CS:addDialog("Hello World!","",false)
+    CS:addDialog("This is a test.","TMan",false, 64) --,text,imgID,pause
+    CS:addDialog("I really hope it works","VMan",false,24)
+    CS:addDialog("Hello World!","",false,64)
 end
 
 function scene1:run()
