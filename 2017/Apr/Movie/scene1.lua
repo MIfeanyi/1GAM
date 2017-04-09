@@ -10,9 +10,9 @@ function scene1:asests() --anything you need to load
 end
 
 function scene1:script()
-    CS:addDialog("This is a test.","TMan",false, 64) --,text,imgID,pause
-    CS:addDialog("I really hope it works","VMan",false,24)
-    CS:addDialog("Hello World!","",false,64)
+    CS:addDialog("Hey! we're waiting for you...","TMan",false, 24) --,text,imgID,pause
+    CS:addDialog("I really hope it works.....","VMan",false,24)
+    CS:addDialog("Hey! Wakeup!","",false,24)
 end
 
 function scene1:run()
