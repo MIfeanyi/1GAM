@@ -4,8 +4,8 @@ dialog = {
     windowColor ={r=0,g=0,b=255},
     nextChar = 1,
     curT = 0,
-    waitT = 0.2,
-    speed = 3,
+    waitT = 0.08,
+    speed = 2,
     dialogs = {}, --text={id,string,imgId,}
     finished = false,
     height=200,
