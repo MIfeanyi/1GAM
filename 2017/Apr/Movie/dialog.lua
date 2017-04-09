@@ -10,7 +10,7 @@ dialog = {
     finished = false,
     height=200,
     window="default", -- draw via colors
-    border = 10
+    border = 30
 }
 
 function dialog:changeColor(r,g,b)

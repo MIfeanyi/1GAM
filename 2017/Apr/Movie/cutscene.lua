@@ -42,6 +42,7 @@ function cutScene:push(id,pause)
     newAct = {id=id,pause=pause}
     table.insert(self.queue,newAct)
 end
+
 function cutScene:addDialog(text,imgID,pause,size)
     self:push("dialog",pause)
     dialog:push("dialog",text,imgID,size)
@@ -55,12 +56,13 @@ function cutScene:update(dt)
             if done == true then
                 table.remove(self.queue,1)
             end
-        end
-        for i, q in ipairs(self.queue) do
-            if q.id == "move" then
-            end
-            if q.pause == true then -- wait 
-                break;
+        else
+            for i, q in ipairs(self.queue) do
+                if q.id == "move" then
+                end
+                if q.pause == true then -- wait 
+                    break;
+                end
             end
         end
     else     --terminate
