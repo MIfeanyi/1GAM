@@ -5,7 +5,7 @@ scene1 = {
     done = false
 }
 
-function scene1:asests() --anything you need to load
+function scene1:load() --anything you need to load
     --addImage("","")
 end
 
@@ -16,7 +16,7 @@ function scene1:script()
 end
 
 function scene1:run()
-    self:asests()
+    self:load()
     self:script()
 end
 function scene1:update(dt)
