@@ -42,9 +42,9 @@ function cutScene:push(id,pause)
     newAct = {id=id,pause=pause}
     table.insert(self.queue,newAct)
 end
-function cutScene:addDialog(text,imgID,pause)
+function cutScene:addDialog(text,imgID,pause,size)
     self:push("dialog",pause)
-    dialog:push("dialog",text,imgID)
+    dialog:push("dialog",text,imgID,size)
 end
 function cutScene:update(dt)
     --call manager functions
