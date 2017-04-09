@@ -1,11 +1,12 @@
 local state = {}
+require("scene1")
 
 function state:new()
 	return lovelyMoon.new(self)
 end
 
 function state:load()
-	
+	scene1:run()
 end
 
 function state:close()
@@ -21,11 +22,18 @@ function state:disable()
 end
 
 function state:update(dt)
-	
+	if scene1.done ==false then
+		scene1:update(dt)
+	else
+	end
 end
 
 function state:draw()
-	
+	if scene1.done ==false then
+		scene1:draw()
+	else
+	love.graphics.print("Done",0,0)
+	end
 end
 
 function state:keypressed(key, unicode)
