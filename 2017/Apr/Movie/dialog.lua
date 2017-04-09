@@ -18,6 +18,10 @@ function dialog:changeColor(r,g,b)
     color.r, color.g, color.b = r,g,b
 end
 
+function dialog:changeSpeed(speed)
+    self.speed = speed
+end
+
 function dialog:push(id,text,imgID,size)
     newDialog = {id=id,text=text,imgID=imgID}
     if size ~= nil then
