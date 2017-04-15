@@ -10,9 +10,9 @@ function scene1:load() --anything you need to load
 end
 
 function scene1:script()
-    CS:addDialog("Hey! we're waiting for you...","TMan",false, 36) --,text,imgID,pause
-    CS:addDialog("I really hope it works.....","VMan",false,24)
-    CS:addDialog("Hey! Wakeup!","",false,48)
+    CS:addDialog("Individuality is only a dream... a false idea of security in the age of infomation.","TMan",false, 36) --,text,imgID,pause
+    CS:addDialog("What is this? Some sort of AI?","VMan",false,24)
+    CS:addDialog("No, I am a living thinking program created to surpass current convex operations.","",false,48)
 end
 
 function scene1:run()

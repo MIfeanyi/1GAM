@@ -5,12 +5,12 @@ dialog = {
     nextChar = 1,
     curT = 0,
     waitT = 0.08,
-    speed = 2,
+    speed = 1,
     dialogs = {}, --text={id,string,imgId,}
     finished = false,
-    height=200,
+    height= 300,
     window="default", -- draw via colors
-    border = 30
+    border = 10
 }
 
 function dialog:changeColor(r,g,b)
