@@ -4,7 +4,7 @@ dialog = {
     windowColor ={r=0,g=0,b=255},
     nextChar = 1,
     curT = 0,
-    waitT = 0.08,
+    waitT = 0.03,
     speed = 1,
     dialogs = {}, --text={id,string,imgId,}
     finished = false,
