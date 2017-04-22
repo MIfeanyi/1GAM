@@ -6,10 +6,11 @@ scene1 = {
 }
 
 function scene1:load() --anything you need to load
-    --addImage("","")
+    sound:addMusic("Title Theme.mp3","intro")
 end
 
 function scene1:script()
+    CS:Audio("intro","play")
     CS:addDialog("Individuality is only a dream... a false idea of security in the age of infomation. It can also be argued that DNA is nothing more than a program designed to preserve itself.","TMan",false, 36) --,text,imgID,pause
     CS:addDialog("What is this? Some sort of AI?","VMan",false,30)
     CS:addDialog("Incorrect. I am not an AI. My code name is Project 2501. I am a living, thinking entity that was created in the sea of information.","",false,36)
