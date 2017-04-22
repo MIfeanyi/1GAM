@@ -1,7 +1,9 @@
 
 sound = {
     sounds = {}, -- stored sounds
-    queue = {} -- queue for sound actions
+    queue = {}, -- queue for sound actions
+    musicVol=1,
+    sfxVol=1
 }
 
 function sound:isEmpty()
@@ -11,7 +13,7 @@ function sound:isEmpty()
     return true
 end
 
-function sound:addSound(src,id)
+function sound:addSfx(src,id)
     local sound = love.audio.newSource(src,"static")
     local newSound = {sfx = sound, id=id}
     table.insert(self.sounds,newSound)
@@ -33,15 +35,20 @@ end
 
 function sound:push(id,action)
     newSound = {id=id,action=action}
-    table.insert(self.sounds,newSound)
+    table.insert(self.queue,newSound)
 end
 
 function sound:update(dt)
-    if self:isEmpty() == false then
+    if self.queue ~= nil and self:isEmpty() == false then
+        local action = self.queue[1].action
+        local id = self.queue[1].id
         if self.queue[1].action == "play" then
             love.audio.play(self:getSound(self.queue[1].id))
         elseif self.queue[1].action == "stop" then
             love.audio.stop(self:getSound(self.queue[1].id))
+        end
+        table.remove(self.queue,1)
+    end
 end
 
 function deleteSound(id)

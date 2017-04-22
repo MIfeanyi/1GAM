@@ -61,20 +61,28 @@ function cutScene:addDialog(text,imgID,pause,size)
     self:push("dialog",pause)
     dialog:push("dialog",text,imgID,size)
 end
+function cutScene:Audio(id,action)
+    self:push("sound",false)
+    sound:push(id,action)
+end
+
 function cutScene:update(dt)
     --call manager functions
-    done = false
     if self.queue ~= nil and self:isEmpty() == false then --items in queue
         if self.queue[1].id == "dialog" then
-            done = dialog:update(dt)
-            if done == true then
+            if dialog:update(dt) == true then
                 table.remove(self.queue,1)
             end
         else
             for i, q in ipairs(self.queue) do
+                if q.id == "sound" then
+                    sound:update(dt)
+                    table.remove(self.queue,i)
+                    break;
+                end
                 if q.id == "move" then
                 end
-                if q.pause == true then -- wait 
+                if q.pause == nil or q.pause == true then -- wait 
                     break;
                 end
             end

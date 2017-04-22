@@ -16,6 +16,7 @@ function scene1:script()
     CS:addDialog("Incorrect. I am not an AI. My code name is Project 2501. I am a living, thinking entity that was created in the sea of information.","",false,36)
     CS:addDialog("And can you offer me proof of your existence? How can you, when neither modern science nor philosophy can explain what life is?","",false,36)
     CS:addDialog("**UNKOWN** One this is... The net is vast and infinite.","",false,36)
+    CS:Audio("intro","stop")
 end
 
 function scene1:run()
