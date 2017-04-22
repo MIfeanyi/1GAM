@@ -25,7 +25,9 @@ CS:Dialog("Hello World",false,"FF3") -- text, wait for press, style
 CS:moveSprite(x,y,"object id","animation","")
 ]]
 require("image")
+require("sound")
 require("dialog")
+
 
 cutScene = {
     queue= {}, --item={id="draw",pause=false}
@@ -49,6 +51,10 @@ function cutScene:pop(id)
             table.remove(self.queue,i)
         end
     end
+end
+
+function cutScene:wait()
+    self:push("wait",true)
 end
 
 function cutScene:addDialog(text,imgID,pause,size)

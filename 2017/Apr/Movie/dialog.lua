@@ -31,7 +31,7 @@ function dialog:push(id,text,imgID,size)
     table.insert(self.dialogs,newDialog)
 end
 
-function dialog:update(dt)
+function dialog:update(dt) --TODO: add nil check
     self.curT = self.curT+dt
     if self.curT > self.waitT then
         self.nextChar = self.nextChar+self.speed
