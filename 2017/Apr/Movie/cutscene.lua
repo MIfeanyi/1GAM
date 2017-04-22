@@ -43,6 +43,14 @@ function cutScene:push(id,pause)
     table.insert(self.queue,newAct)
 end
 
+function cutScene:pop(id)
+    for i, a in ipairs(self.queue) do
+        if a.id == id then
+            table.remove(self.queue,i)
+        end
+    end
+end
+
 function cutScene:addDialog(text,imgID,pause,size)
     self:push("dialog",pause)
     dialog:push("dialog",text,imgID,size)
