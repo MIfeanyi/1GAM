@@ -24,7 +24,7 @@ CS:wait()
 CS:Dialog("Hello World",false,"FF3") -- text, wait for press, style
 CS:moveSprite(x,y,"object id","animation","")
 ]]
-require("image")
+require("sprite")
 require("sound")
 require("dialog")
 
