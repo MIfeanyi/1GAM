@@ -26,7 +26,7 @@ function scene1:script()
     CS:addDialog("Individuality is only a dream... a false idea of security in the age of infomation. It can also be argued that DNA is nothing more than a program designed to preserve itself.","TMan",false, 36) --,text,imgID,pause
     CS:changeAnim("player","talk")
     CS:moveSprite("player",200,300,40,true)
-    CS:moveSprite("dude",300,300,50,false)
+    CS:moveSprite("dude",300,300,60,false)
     CS:addDialog("What is this? Some sort of AI?","VMan",false,30)
     CS:changeAnim("player","sleep")
     CS:addDialog("Incorrect. I am not an AI. My code name is Project 2501. I am a living, thinking entity that was created in the sea of information.","",false,36)
