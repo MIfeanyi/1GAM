@@ -61,14 +61,22 @@ function cutScene:addDialog(text,imgID,pause,size)
     self:push("dialog",pause)
     dialog:push("dialog",text,imgID,size)
 end
+
 function cutScene:Audio(id,action)
     self:push("sound",false)
     sound:push(id,action)
 end
+
 function cutScene:changeAnim(sId,aId)
     self:push("sprite",false)
     sprite:change(sId,aId)
 end
+
+function cutScene:moveSprite(id,x,y,speed,pause)
+    self:push("move",pause)
+    sprite:addMove(id,x,y,speed,pause)
+end
+
 function cutScene:update(dt)
     --call manager functions
     if self.queue ~= nil and self:isEmpty() == false then --items in queue
@@ -88,11 +96,17 @@ function cutScene:update(dt)
                     if q.pause == true or sDone == true then
                         break
                     end
-                end
-                if q.id == "move" then
+                elseif q.id == "move" then
+                    mDone = sprite:updateQ(dt)
+                    if mDone == true then
+                        table.remove(self.queue,i)
+                    end
+                    if q.pause == true then
+                        break
+                    end
                 end
                 if q.pause == nil or q.pause == true then -- wait 
-                    break;
+                    break
                 end
             end
         end

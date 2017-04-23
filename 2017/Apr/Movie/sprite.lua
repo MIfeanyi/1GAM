@@ -4,7 +4,7 @@ local animate = require 'lib.anim8'
 sprite = {
     sprites={},
     queue={},
-    movement = {}
+    speed = 100
 }
 
 function sprite:isEmpty()
@@ -18,8 +18,8 @@ function sprite:addSprite(id,x,y)
     table.insert(self.sprites,newSprite)
 end
 
-function sprite:move(action,id,x,y,pause)
-    newMove = {action=action,id=id,x=x,y=y,pause}
+function sprite:addMove(id,x,y,speed,pause)
+    newMove = {action="move",id=id,x=x,y=y,speed=speed,pause=pause}
     table.insert(self.queue,newMove)
 end
 
@@ -67,6 +67,8 @@ function sprite:updateQ(dt)
             sprite:changeAnim(q.sId,q.aId)
             table.remove(self.queue,1)
             return true
+        elseif self.queue[1].action == "move" then
+            return self:move(dt)
         end
     end
     return false
@@ -81,4 +83,48 @@ function sprite:draw()
             end
         end
     end
+end
+
+function sprite:move(dt)
+    for i, m in ipairs(self.queue) do
+        if m.action ~= "move" then
+            break
+        end
+        for j, s in ipairs(self.sprites) do
+            if s.id == m.id then
+                if s.x > m.x then
+                    s.x = s.x - m.speed*dt
+                    if s.x - m.x <= -1 then -- correct for dt
+                        s.x = m.x
+                    end
+                end
+                if s.x < m.x then
+                    s.x = s.x + m.speed*dt
+                    if m.x - s.x  <= 1 then
+                        s.x = m.x
+                    end
+                end
+                if s.y > m.y then
+                    s.y = s.y - m.speed*dt
+                    if s.y - m.y <= -1 then -- correct for dt
+                    s.y = m.y
+                    end
+                end
+                if s.y < m.y then
+                    s.y = s.y + m.speed*dt
+                    if m.y - s.y  <= 1 then
+                        s.y = m.y
+                    end
+                end
+                if s.x == m.x and s.y == m.y then
+                    table.remove(self.queue,i)
+                    return true
+                end
+            end
+        end
+        if m.pause == true then
+            break
+        end
+    end
+  return false
 end
