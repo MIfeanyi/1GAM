@@ -23,15 +23,15 @@ end
 
 function scene1:script()
     CS:Audio("intro","play")
-    CS:addDialog("Individuality is only a dream... a false idea of security in the age of infomation. It can also be argued that DNA is nothing more than a program designed to preserve itself.","TMan",false, 36) --,text,imgID,pause
+    CS:addDialog("Individuality is only a dream... a false idea of security in the age of infomation. It can also be argued that DNA is nothing more than a program designed to preserve itself.","TMan",false, 24) --,text,imgID,pause
     CS:changeAnim("player","talk")
     CS:moveSprite("player",200,300,40,true)
     CS:moveSprite("dude",300,300,60,false)
     CS:addDialog("What is this? Some sort of AI?","VMan",false,30)
     CS:changeAnim("player","sleep")
-    CS:addDialog("Incorrect. I am not an AI. My code name is Project 2501. I am a living, thinking entity that was created in the sea of information.","",false,36)
-    CS:addDialog("And can you offer me proof of your existence? How can you, when neither modern science nor philosophy can explain what life is?","",false,36)
-    CS:addDialog("**UNKOWN** One this is... The net is vast and infinite.","",false,36)
+    CS:addDialog("Incorrect. I am not an AI. My code name is Project 2501. I am a living, thinking entity that was created in the sea of information.","",false,24)
+    CS:addDialog("And can you offer me proof of your existence? How can you, when neither modern science nor philosophy can explain what life is?","",false,12)
+    CS:addDialog("**UNKOWN** One this is... The net is vast and infinite.","",false,12)
     CS:Audio("intro","stop")
     --[[ Sprite test
     CS:moveSprite("player",200,300,40) param: id,x,y,speed
