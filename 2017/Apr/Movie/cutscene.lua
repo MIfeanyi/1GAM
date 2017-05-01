@@ -92,8 +92,10 @@ function cutScene:update(dt)
                     break;
                 elseif q.id == "sprite" then
                     sDone = sprite:updateQ(dt)
-                    table.remove(self.queue,i)
-                    if q.pause == true or sDone == true then
+                    if sDone == true then
+                        table.remove(self.queue,i)
+                    end
+                    if q.pause == true then
                         break
                     end
                 elseif q.id == "move" then

@@ -35,7 +35,6 @@ function sprite:addAnimation(sId,img,h,w,frames,id,speed,pause)
             break
         end
     end
-  return newAnimation
 end
 
 function sprite:change(sId,aId)
@@ -64,7 +63,7 @@ function sprite:updateQ(dt)
     if self.queue[1] ~= nil and self:isEmpty() == false then
         q=self.queue[1]
         if self.queue[1].action == "change" then
-            sprite:changeAnim(q.sId,q.aId)
+            sprite:changeAnim(self.queue[1].sId,self.queue[1].aId)
             table.remove(self.queue,1)
             return true
         elseif self.queue[1].action == "move" then
@@ -89,36 +88,37 @@ function sprite:move(dt)
     for i, m in ipairs(self.queue) do
         if m.action ~= "move" then
             break
-        end
-        for j, s in ipairs(self.sprites) do
-            if s.id == m.id then
-                if s.x > m.x then
-                    s.x = s.x - m.speed*dt
-                    if s.x - m.x <= -1 then -- correct for dt
-                        s.x = m.x
+        else
+            for j, s in ipairs(self.sprites) do
+                if s.id == m.id then
+                    if s.x > m.x then
+                        s.x = s.x - m.speed*dt
+                        if s.x - m.x <= -1 then -- correct for dt
+                            s.x = m.x
+                        end
                     end
-                end
-                if s.x < m.x then
-                    s.x = s.x + m.speed*dt
-                    if m.x - s.x  <= 1 then
-                        s.x = m.x
+                    if s.x < m.x then
+                        s.x = s.x + m.speed*dt
+                        if m.x - s.x  <= 1 then
+                            s.x = m.x
+                        end
                     end
-                end
-                if s.y > m.y then
-                    s.y = s.y - m.speed*dt
-                    if s.y - m.y <= -1 then -- correct for dt
-                    s.y = m.y
-                    end
-                end
-                if s.y < m.y then
-                    s.y = s.y + m.speed*dt
-                    if m.y - s.y  <= 1 then
+                    if s.y > m.y then
+                        s.y = s.y - m.speed*dt
+                        if s.y - m.y <= -1 then -- correct for dt
                         s.y = m.y
+                        end
                     end
-                end
-                if s.x == m.x and s.y == m.y then
-                    table.remove(self.queue,i)
-                    return true
+                    if s.y < m.y then
+                        s.y = s.y + m.speed*dt
+                        if m.y - s.y  <= 1 then
+                            s.y = m.y
+                        end
+                    end
+                    if s.x == m.x and s.y == m.y then
+                        table.remove(self.queue,i)
+                        return true
+                    end
                 end
             end
         end
