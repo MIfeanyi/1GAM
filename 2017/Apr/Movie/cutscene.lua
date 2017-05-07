@@ -27,7 +27,7 @@ CS:moveSprite(x,y,"object id","animation","")
 require("sprite")
 require("sound")
 require("dialog")
-
+require("transitions")
 
 cutScene = {
     queue= {}, --item={id="draw",pause=false}
@@ -72,6 +72,11 @@ function cutScene:changeAnim(sId,aId)
     sprite:change(sId,aId)
 end
 
+function cutScene:slide(direction,color,speed)
+    self:push("slide",true)
+    transitions:addSlide(direction,color,speed)
+end
+
 function cutScene:moveSprite(id,x,y,speed,pause)
     self:push("move",pause)
     sprite:addMove(id,x,y,speed,pause)
@@ -86,6 +91,13 @@ function cutScene:update(dt)
             end
         else
             for i, q in ipairs(self.queue) do
+                if q.id == "slide" then
+                    tDone = transitions.slide:update(dt)
+                    if tDone == true then
+                        table.remove(self.queue,i)
+                    end
+                    break
+                end
                 if q.id == "sound" then
                     sound:update(dt)
                     table.remove(self.queue,i)
@@ -132,4 +144,5 @@ function cutScene:draw()
             sprite:draw()
         end
     end
+    transitions:draw()
 end

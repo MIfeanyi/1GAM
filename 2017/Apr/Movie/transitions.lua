@@ -2,47 +2,97 @@
 transitions= {
     queue = {},
     fade = {
+        speed = 0, 
+    },
+    slide = {
         speed = 0,
         x,y
     },
-    slide = {
-        speed = 0
-    },
-    color = {r=0,b=0,g=0,a=0}
+    color = {r=255,b=0,g=0,a=255},
+    x =0,y=0,h=love.graphics.getHeight(),w=love.graphics.getWidth(),
+    reset = false
 }
-
-function transitions:addFade()
+function transitions:isEmpty()
+    for _, _ in ipairs(self.queue) do
+        return false
+    end
+    return true
 end
 
-function transitions:addSlide()
+function transitions:addFade(action,color,speed)
+end
+
+function transitions:addSlide(direction,color,speed)
+    newSlide ={direction=direction,color=color,speed=speed}
+    table.insert(self.queue,newSlide)
 end
 
 function transitions:update()
 end
 
 function transitions:draw()
+    love.graphics.setColor(self.color.r,self.color.g,self.color.b,self.color.a)
+    love.graphics.rectangle("fill", self.x, self.y,self.w,self.h)
+    love.graphics.setColor(255,255,255,255)
 end
 
-function transitions:fade:reset(direction)
+function transitions.fade:reset(direction)
     self.x,self.y = 0,0
 end
 
-function transitions:slide:update(direction,dt)
+function transitions.slide:update(dt)
     local height, width = love.graphics.getHeight(),love.graphics.getWidth()
-    if direction == "right" then
-        self.x = self.x + self.speed*dt
-        if self.x >= width then
-            return true
+    local queue = transitions.queue
+    if queue[1] ~= nil and transitions:isEmpty() == false then
+        if queue[1].color ~= nil then
+            transitions.color = queue[1].color
         end
-    elseif direction == "left" then
-        self.x = self.x + self.speed*dt
-        if self.x <= 0 then
-            return true
+        if queue[1].direction == "right" then
+            if transitions.reset == false then
+                transitions.x, transitions.y = -width,0
+                transitions.reset = true
+            end
+            transitions.x = transitions.x + queue[1].speed*dt
+            if transitions.x + width >= width then
+                transitions.reset = false
+                table.remove(queue,1)
+                return true
+            end
+        elseif queue[1].direction == "left" then
+            if transitions.reset == false then
+                transitions.x, transitions.y = width,0
+                transitions.reset = true
+            end
+            transitions.x = transitions.x - queue[1].speed*dt
+            if transitions.x <= 0 then
+                transitions.reset = false
+                table.remove(queue,1)
+                return true
+            end
+        elseif queue[1].direction == "up" then
+            if transitions.reset == false then
+                transitions.x, transitions.y = 0,height
+                transitions.reset = true
+            end
+            transitions.y = transitions.y - queue[1].speed*dt
+            if transitions.y <= 0 then
+                transitions.reset = false
+                table.remove(queue,1)
+                return true
+            end
+        elseif queue[1].direction == "down" then
+            if transitions.reset == false then
+                transitions.x, transitions.y = 0,-height
+                transitions.reset = true
+            end
+            transitions.y = transitions.y + queue[1].speed*dt
+            if transitions.y + height >= height then
+                transitions.reset = false
+                table.remove(queue,1)
+                return true
+            end
         end
-    elseif direction == "up" then
-        self.y = self.y - self.speed*dt
-    elseif direction == "down" then
-        self.y = self.y + self.speed*dt
     end
+    return false
 end
 
