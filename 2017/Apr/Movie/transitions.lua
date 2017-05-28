@@ -50,46 +50,62 @@ function transitions.slide:update(dt)
         if queue[1].direction == "right" then
             if transitions.reset == false then
                 transitions.x, transitions.y = -width,0
+                transitions.h, transitions.w = love.graphics.getHeight(),love.graphics.getWidth()
                 transitions.reset = true
             end
             transitions.x = transitions.x + queue[1].speed*dt
             if transitions.x + width >= width then
-                transitions.reset = false
-                table.remove(queue,1)
-                return true
+                transitions.w = transitions.w - queue[1].speed*dt
+                if transitions.w <= 0 then
+                    transitions.reset = false
+                    table.remove(queue,1)
+                    return true
+                end
             end
         elseif queue[1].direction == "left" then
             if transitions.reset == false then
                 transitions.x, transitions.y = width,0
+                transitions.h, transitions.w = love.graphics.getHeight(),love.graphics.getWidth()
                 transitions.reset = true
             end
             transitions.x = transitions.x - queue[1].speed*dt
             if transitions.x <= 0 then
-                transitions.reset = false
-                table.remove(queue,1)
-                return true
+                transitions.w = transitions.w - queue[1].speed*dt
+                if transitions.w <=0 then
+                    transitions.reset = false
+                    table.remove(queue,1)
+                    return true
+                end
             end
         elseif queue[1].direction == "up" then
             if transitions.reset == false then
                 transitions.x, transitions.y = 0,height
+                transitions.h, transitions.w = love.graphics.getHeight(),love.graphics.getWidth()
                 transitions.reset = true
             end
             transitions.y = transitions.y - queue[1].speed*dt
             if transitions.y <= 0 then
-                transitions.reset = false
-                table.remove(queue,1)
-                return true
+                transitions.h = transitions.h - queue[1].speed*dt
+                if transitions.h <=0 then
+                    transitions.reset = false
+                    table.remove(queue,1)
+                    return true
+                end
             end
         elseif queue[1].direction == "down" then
             if transitions.reset == false then
                 transitions.x, transitions.y = 0,-height
+                transitions.h, transitions.w = love.graphics.getHeight(),love.graphics.getWidth()
                 transitions.reset = true
             end
             transitions.y = transitions.y + queue[1].speed*dt
             if transitions.y + height >= height then
-                transitions.reset = false
-                table.remove(queue,1)
-                return true
+                transitions.h = transitions.h - queue[1].speed*dt
+                if transitions.h <=0 then
+                    transitions.reset = false
+                    table.remove(queue,1)
+                    return true
+                end
             end
         end
     end
