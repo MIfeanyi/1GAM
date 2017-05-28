@@ -27,6 +27,9 @@ function transitions:addSlide(direction,color,speed)
     table.insert(self.queue,newSlide)
 end
 
+function transitions:addFade()
+end
+
 function transitions:update()
 end
 
