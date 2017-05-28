@@ -6,7 +6,7 @@ scene1 = {
 }
 
 function scene1:load() --anything you need to load
-    sound:addMusic("Title Theme.mp3","intro")
+    --sound:addMusic("Title Theme.mp3","intro")
     addImage("/gfx/player.png","player")
     addImage("/gfx/player-talk.png","player-talk")
     addImage("/gfx/player-sleep.png","player-sleep")
@@ -26,7 +26,7 @@ function scene1:script()
     CS:slide("right",{r=255,b=255,g=255,a=255},200)
     CS:moveSprite("player",0,200,300,40,true)
     CS:slide("left",{r=255,b=255,g=255,a=50},200)
-    CS:Audio("intro","play")
+    --CS:Audio("intro","play")
     CS:addDialog("Individuality is only a dream... a false idea of security in the age of infomation. It can also be argued that DNA is nothing more than a program designed to preserve itself.","TMan",false, 24) --,text,imgID,pause
     CS:changeAnim("player","stand")
     CS:moveSprite("player",200,300,40,true)
