@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://Menu.gd" type="Script" id=1]
+[ext_resource path="res://title.png" type="Texture" id=2]
+
+[node name="Panel" type="Panel"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 0.0
+margin/top = 0.0
+margin/right = 480.0
+margin/bottom = 720.0
+script/script = ExtResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 162.0
+margin/top = 267.0
+margin/right = 302.0
+margin/bottom = 281.0
+text = "Picking Sticks"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="Button" type="Button" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 209.0
+margin/top = 665.0
+margin/right = 256.0
+margin/bottom = 685.0
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "begin"
+flat = false
+
+[node name="Sprite" type="Sprite" parent="."]
+
+transform/pos = Vector2( 228.577, 426.968 )
+transform/scale = Vector2( 2.2778, 2.12801 )
+texture = ExtResource( 2 )
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+
+
